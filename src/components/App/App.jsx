@@ -1,8 +1,14 @@
 import React from "react";
 
-import "./styles.scss";
+import Controls from "./../Controls/Controls";
+import Player from "./../Player/Player";
+
+import "./App.scss";
 
 const App = () => {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const [activeIndex, setActiveIndex] = React.useState(0);
+
   return (
     <div className="container">
       <section className="cassette">
@@ -45,7 +51,11 @@ const App = () => {
         </div>
         <div className="cassette__tape-drums tape-drums">
           <ul className="tape-drums__items">
-            <li className="tape-drums__item  tape-drums__item--left drum-left">
+            <li
+              className={`tape-drums__item  tape-drums__item--left drum-left ${
+                isPlaying && "tape-drums__item--spin"
+              }`}
+            >
               <span className="drum-left__pin drum-left__pin--1"></span>
               <span className="drum-left__pin drum-left__pin--2"></span>
               <span className="drum-left__pin drum-left__pin--3"></span>
@@ -53,7 +63,11 @@ const App = () => {
               <span className="drum-left__pin drum-left__pin--5"></span>
               <span className="drum-left__pin drum-left__pin--6"></span>
             </li>
-            <li className="tape-drums__item  tape-drums__item--right drum-right">
+            <li
+              className={`tape-drums__item  tape-drums__item--right drum-right ${
+                isPlaying && "tape-drums__item--spin"
+              }`}
+            >
               <span className="drum-right__pin drum-right__pin--1"></span>
               <span className="drum-right__pin drum-right__pin--2"></span>
               <span className="drum-right__pin drum-right__pin--3"></span>
@@ -65,11 +79,19 @@ const App = () => {
         </div>
         <div className="cassette__tape-big-drums tape-big-drums">
           <ul className="tape-big-drums__items">
-            <li className="tape-big-drums__item tape-big-drums__item--left big-drum-left">
+            <li
+              className={`tape-big-drums__item tape-big-drums__item--left big-drum-left ${
+                isPlaying && "tape-big-drums__item--spin"
+              }`}
+            >
               <span className="big-drum-left__line big-drum-left__line--1"></span>
               <span className="big-drum-left__line big-drum-left__line--2"></span>
             </li>
-            <li className="tape-big-drums__item tape-big-drums__item--right big-drum-right">
+            <li
+              className={`tape-big-drums__item tape-big-drums__item--right big-drum-right ${
+                isPlaying && "tape-big-drums__item--spin"
+              }`}
+            >
               <span className="big-drum-right__line big-drum-right__line--1"></span>
             </li>
           </ul>
@@ -83,9 +105,12 @@ const App = () => {
         </div>
       </section>
 
-      <section className="contsls">
-        
-      </section>
+      <Controls
+        setIsPlaying={setIsPlaying}
+        setActiveIndex={setActiveIndex}
+        activeIndex={activeIndex}
+      />
+      <Player isPlaying={isPlaying} setActiveIndex={setActiveIndex} />
     </div>
   );
 };
