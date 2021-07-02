@@ -110,7 +110,11 @@ const App = () => {
         setActiveIndex={setActiveIndex}
         activeIndex={activeIndex}
       />
-      <Player isPlaying={isPlaying} setActiveIndex={setActiveIndex} />
+      <Player
+        isPlaying={isPlaying}
+        setActiveIndex={setActiveIndex}
+        setIsPlaying={setIsPlaying}
+      />
     </div>
   );
 };
